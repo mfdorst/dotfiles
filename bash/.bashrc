@@ -95,7 +95,10 @@ function mcd() {
 }
 
 # Path
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/scripts:$PATH"
+export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 
 # Fallback prompt if starship is not installed
 PS1='[\u@\h \W]\$ '
@@ -108,6 +111,11 @@ fi
 # Zoxide
 if command -v zoxide &> /dev/null; then
     eval "$(zoxide init bash --cmd j)"
+fi
+
+# Pyenv
+if command -v pyenv &> /dev/null; then
+    eval "$(pyenv virtualenv-init -)"
 fi
 
 # Bun
